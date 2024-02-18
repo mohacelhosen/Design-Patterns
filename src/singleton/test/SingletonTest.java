@@ -1,4 +1,6 @@
-package singleton;
+package singleton.test;
+
+import singleton.impl.SingletonPrinter;
 
 import java.lang.reflect.Constructor;
 

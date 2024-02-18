@@ -1,4 +1,4 @@
-package singleton;
+package singleton.impl;
 
 public class SingletonPrinter {
 
