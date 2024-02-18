@@ -1,6 +1,6 @@
 package singleton.impl;
 
-public class BasicSingletonPrinter {
+public class BasicSingletonPrinter { //Lazy Initialization
     private static BasicSingletonPrinter printer;
 
     private BasicSingletonPrinter(){
