@@ -1,6 +1,9 @@
 package singleton.util;
 
-public class Common implements Cloneable {
+import java.io.Serializable;
+
+public class Common implements Cloneable, Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Override
     public Object clone()throws CloneNotSupportedException {
