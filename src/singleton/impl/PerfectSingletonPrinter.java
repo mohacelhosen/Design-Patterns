@@ -1,17 +1,15 @@
-
 package singleton.impl;
 
 import singleton.util.Common;
 
 import java.io.ObjectStreamException;
 
-public class PerfectSingleton extends Common {
-    private static PerfectSingleton instance;
+public class PerfectSingletonPrinter extends Common {
     private static boolean isInstantiated = false;
 
     // Prevent multiple object creation through the constructor
-    private PerfectSingleton() {
-        // Check if an instance already exists
+    private PerfectSingletonPrinter() {
+        // Check if printer already exists
         if (isInstantiated) {
             throw new IllegalStateException("Instance already exists. Use getInstance() method.");
         } else {
@@ -20,29 +18,23 @@ public class PerfectSingleton extends Common {
         }
     }
 
-
-    // Prevent multiple object creation through multi-threading
-    public static PerfectSingleton getInstance() {
-        if (instance == null) {
-            synchronized (PerfectSingleton.class) {
-                if (instance == null) {
-                    instance = new PerfectSingleton();
-                }
-            }
-        }
-        return instance;
+    private static class SingletonHolder{
+        private static PerfectSingletonPrinter PRINTER = new PerfectSingletonPrinter();
     }
+
+    public static PerfectSingletonPrinter getInstance(){
+        return SingletonHolder.PRINTER;
+    }
+
 
     // Prevent multiple object creation through cloning
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return instance;
+        return  SingletonHolder.PRINTER;
     }
 
     // Prevent multiple object creation through deserialization
     private Object readResolve() throws ObjectStreamException {
-        return instance;
+        return  SingletonHolder.PRINTER;
     }
-
-
 }
